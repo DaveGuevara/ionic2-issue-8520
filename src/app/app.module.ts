@@ -9,6 +9,22 @@ import { TutorialPage } from '../pages/tutorial/tutorial';
 
 import { UserData } from '../providers/user-data';
 
+import { AngularFireModule, AuthProviders, AuthMethods } from 'angularfire2';
+
+// YOUR SETTINGS GOES HERE!
+export const firebaseConfig = {
+  apiKey: "AIzaSyAjiJc9cXvd3bzl-aW0wbQC6sajr6RH5hg",
+  authDomain: "brilliant-inferno-1044.firebaseapp.com",
+  databaseURL: "https://brilliant-inferno-1044.firebaseio.com",
+  storageBucket: "brilliant-inferno-1044.appspot.com",
+  messagingSenderId: "1097950001655"
+};
+
+const firebaseAuthConfig = {
+  provider: AuthProviders.Password,
+  method: AuthMethods.Password
+}
+
 @NgModule({
   declarations: [
     MyApp,
@@ -19,7 +35,8 @@ import { UserData } from '../providers/user-data';
     TutorialPage
   ],
   imports: [
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    AngularFireModule.initializeApp(firebaseConfig, firebaseAuthConfig)
   ],
   bootstrap: [IonicApp],
   entryComponents: [

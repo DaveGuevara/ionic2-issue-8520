@@ -31,8 +31,8 @@ export class LoginPage {
   onLogin(form) {
     this.submitted = true;
     if (form.valid) {
-      this.userData.loginwithemailandpassword(this.login)
-        .then(() => {
+      this.userData.login(this.login)
+      .then(() => {
           this.LoginSuccess();
         }        
       )
@@ -45,10 +45,14 @@ export class LoginPage {
   }
 
   LoginSuccess(): void {
-    this.userData.getUserData().on('value', (data) => {
+    this.navCtrl.setRoot(Page1, {}, {animate: true, direction: 'forward'});
+    this.userData.getUserData();
+    
+    /*this.userData.getUserData().then('value', (data) => {
       this.userData.userSettings = data.val(); 
       this.navCtrl.setRoot(Page1, {}, {animate: true, direction: 'forward'});
-    });
+    });*/
+    
   }
 
   LoginError(error): void {

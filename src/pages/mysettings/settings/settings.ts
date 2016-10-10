@@ -33,7 +33,7 @@ export class SettingsPage {
 
   ionViewDidLoad() {
     this.userSettings = this.userData.userSettings;
-    console.log('ion-view-did-load here');
+    console.log(this.userSettings);
   }
 
   openPersonalProfile() {
@@ -50,15 +50,6 @@ export class SettingsPage {
 
   toggleTouchID(e) {
     this.userData.updateTouchID(e.checked)
-      .then(() => {
-        console.log('success');
-      }        
-    )
-    .catch(
-      (error) => {          
-        console.log('error');
-      }
-    );
   }
 
   changeDefaltBalance() {
